@@ -1,0 +1,7 @@
+.nav-link {
+  display: inline-block;
+}
+.navbar-expand-lg {
+  display: flex;
+  justify-content: space-between;
+}

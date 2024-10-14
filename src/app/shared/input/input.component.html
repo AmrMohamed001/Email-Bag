@@ -1,0 +1,36 @@
+<label [for]="for" class="form-label">{{ label }}</label>
+<div class="input-group has-validation">
+  <input
+    class="form-control"
+    [id]="for"
+    [type]="type"
+    [formControl]="control"
+    [ngClass]="{
+      'is-invalid': control.invalid && (control.dirty || control.touched)
+    }"
+  />
+
+  <ng-container *ngIf="control.errors && control.touched && control.dirty">
+    <div class="error-message" *ngIf="control.errors.required">
+      Please fill this input.
+    </div>
+
+    <div class="error-message" *ngIf="control.errors.minlength">
+      This input must be larger than
+      {{ control.errors.minlength.requiredLength }}.
+    </div>
+
+    <div class="error-message" *ngIf="control.errors.maxlength">
+      This input must be smaller than
+      {{ control.errors.maxlength.requiredLength }}.
+    </div>
+
+    <div class="error-message" *ngIf="control.errors.pattern">
+      This input is invalid.
+    </div>
+
+    <div class="error-message" *ngIf="control.errors.nonUniqueUsername">
+      This username is used before.
+    </div>
+  </ng-container>
+</div>
